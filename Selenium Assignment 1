@@ -1,0 +1,36 @@
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class QATechHub1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Ja\\Documents\\chromedriver.exe");
+		ChromeOptions co = new ChromeOptions ();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver (co);
+		driver.manage().window().maximize();
+		driver.get("http://qatechhub.com");
+		String titleOfThePage = driver.getTitle();
+		if (titleOfThePage.equals("QA Automation Tools Trainings and Tutorials | QA Tech Hub")) {
+			System.out.println("Test case PASS");
+		} else {
+			System.out.println("Test case FAIL");
+		}
+		{
+			driver.navigate().to("https://sr-rs.facebook.com/");
+			driver.navigate().back();
+			System.out.println( driver.getCurrentUrl());
+			driver.navigate().forward();
+			driver.navigate().refresh();
+			driver.quit();
+	}
+
+	}
+
+}
