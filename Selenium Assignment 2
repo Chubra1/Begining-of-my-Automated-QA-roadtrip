@@ -1,0 +1,53 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
+public class QATechHub2 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Ja\\Documents\\chromedriver.exe");
+		ChromeOptions co = new ChromeOptions ();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver (co);
+		driver.manage().window().maximize();
+		driver.get("https://www.fb.com/");
+		
+String urlFromBrowser = driver.getCurrentUrl();
+		
+		String facebookUrl =" www.fb.com";
+		if(urlFromBrowser.equalsIgnoreCase(facebookUrl)) {
+			System.out.println("fb has redirected to facebook");
+		} else {
+			System.out.println("No redirection happened");
+		
+		}
+		driver.findElement(By.xpath("//a[@class='_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy']")).click();
+		Thread.sleep(3000);
+        driver.findElement(By.name("firstname")).sendKeys("Nemanja");
+        driver.findElement(By.name("lastname")).sendKeys("Cubrilo");
+        driver.findElement(By.name("reg_email__")).sendKeys("cubrilo.n@yahoo.com");
+        Thread.sleep(3000);
+        driver.findElement(By.name("reg_email_confirmation__")).sendKeys("cubrilo.n@yahoo.com");
+        driver.findElement(By.name("reg_passwd__")).sendKeys("maliKlinjo11");
+        Select setDate = new Select(driver.findElement(By.id("day")));
+		Select setMonth = new Select(driver.findElement(By.id("month")));
+		Select setYear = new Select(driver.findElement(By.id("year")));
+		
+		setDate.selectByVisibleText("1");
+		setMonth.selectByVisibleText("Mar");
+		setYear.selectByVisibleText("1990");	
+		driver.findElement(By.xpath("//input[@type='radio']")).click();
+		driver.findElement(By.name("websubmit")).click();
+		driver.quit();
+		
+	}
+
+	
+}
