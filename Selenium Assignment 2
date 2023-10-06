@@ -45,7 +45,7 @@ String urlFromBrowser = driver.getCurrentUrl();
 		setYear.selectByVisibleText("1990");	
 		driver.findElement(By.xpath("//input[@type='radio']")).click();
 		driver.findElement(By.name("websubmit")).click();
-		driver.quit();
+		//driver.quit();
 		
 	}
 
